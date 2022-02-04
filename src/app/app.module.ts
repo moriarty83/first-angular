@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { HelloworldComponent } from './helloworld/helloworld.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloworldComponent,
     FirstComponent,
-    SecondComponent
+    SecondComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
