@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, Data } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { DataService } from '../data.service';
@@ -15,7 +15,11 @@ export class HelloworldComponent implements OnInit {
   name = "Hello"
   helloWorld = "Hello World!"
   imageURL = ""
-  body = {
+
+  vehicleType: string = ""
+  distance: Number = 0
+
+  body: object = {
     "emission_factor": "passenger_vehicle-vehicle_type_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na",
     "parameters": {
       "distance": 20,
@@ -24,6 +28,19 @@ export class HelloworldComponent implements OnInit {
   };
   headers = { 'Authorization': environment.climatiqHeader }; 
 
+  public getEmissions(){
+    return this.httpClient.post<any>('https://beta2.api.climatiq.io/estimate', 
+    this.body, 
+    {headers: this.headers, observe: 'response'}
+    ).subscribe((data: any)=>{
+      console.log("Hello")
+      console.log(data);
+    })  
+  }
+
+  public updateBody(vehicle: string, distance: number){
+
+  }
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private httpClient: HttpClient) { }
 
@@ -36,14 +53,5 @@ export class HelloworldComponent implements OnInit {
       this.imageURL = data.url
     })  
 
-    this.httpClient.post<any>('https://reqres.in/api/posts', 
-      this.body, 
-      {headers: this.headers,
-      observe: 'response'}).subscribe((response) => {
-        console.log(response.status); // response status 
-        console.log(response.body); // response body (returned response)
-      });
-    
   }
-
 }
