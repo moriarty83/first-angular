@@ -1,11 +1,15 @@
 <h1>{{helloWorld}}</h1>
 
-<img src={{imageURL}}>
+<!-- <img src={{imageURL}}> -->
 
-<select>
-    <option>Gas Car</option>
-    <option>Hybrid Car</option>
-    <option>Electric Car</option>
+<select name="engine-type" id="engine-type-menu" (change)="selectVehicleHandler($event)">
+    <option value="" disabled selected>--Please choose an engine type--</option>
+    <option value="petrol">Gas Car</option>
+    <option value="hev">Hybrid Car</option>
+    <option value="bev">Electric Car</option>
 </select>
+
+<label for="distance">Distance (mi)</label>
+<input name="distance" type="number" (change)="mileageHandler($event)">
 
 <button (click)="getEmissions()">ClickMe</button>

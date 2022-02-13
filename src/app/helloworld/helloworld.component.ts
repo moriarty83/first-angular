@@ -16,13 +16,14 @@ export class HelloworldComponent implements OnInit {
   helloWorld = "Hello World!"
   imageURL = ""
 
-  vehicleType: string = ""
-  distance: Number = 0
+  vehicleType: string = "car"
+  fuelSource: string = "na"
+  distance: Number = 20
 
   body: object = {
-    "emission_factor": "passenger_vehicle-vehicle_type_car-fuel_source_na-engine_size_na-vehicle_age_na-vehicle_weight_na",
+    "emission_factor": `passenger_vehicle-vehicle_type_${this.vehicleType}-fuel_source_${this.fuelSource}-engine_size_na-vehicle_age_na-vehicle_weight_na`,
     "parameters": {
-      "distance": 20,
+      "distance": this.distance,
       "distance_unit": "mi"
       }
   };
@@ -33,13 +34,30 @@ export class HelloworldComponent implements OnInit {
     this.body, 
     {headers: this.headers, observe: 'response'}
     ).subscribe((data: any)=>{
-      console.log("Hello")
+      // console.log("Hello")
       console.log(data);
     })  
   }
 
-  public updateBody(vehicle: string, distance: number){
+  selectVehicleHandler (event: any) {
+    console.log(event.target.value)
+    this.fuelSource = event.target.value;
+    this.updateBody()
+  }
 
+  mileageHandler(event: any){
+    this.distance = event.target.value
+    this.updateBody()
+  }
+
+  public updateBody(){
+    this.body = {
+      "emission_factor": `passenger_vehicle-vehicle_type_${this.vehicleType}-fuel_source_${this.fuelSource}-engine_size_na-vehicle_age_na-vehicle_weight_na`,
+      "parameters": {
+        "distance": +this.distance,
+        "distance_unit": "mi"
+        }
+    };
   }
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private httpClient: HttpClient) { }
@@ -48,10 +66,10 @@ export class HelloworldComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.name = params['name'];
     });
-    this.dataService.sendGetRequest().subscribe((data: any)=>{
-      console.log(data);
-      this.imageURL = data.url
-    })  
+    // this.dataService.sendGetRequest().subscribe((data: any)=>{
+    //   console.log(data);
+    //   this.imageURL = data.url
+    // })  
 
   }
 }
