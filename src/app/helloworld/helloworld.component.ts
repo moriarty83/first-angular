@@ -15,6 +15,8 @@ export class HelloworldComponent implements OnInit {
   name = "Hello"
   helloWorld = "Hello World!"
   imageURL = ""
+  co2e: number = 0.0
+  co2eUnit: string = ""
 
   vehicleType: string = "car"
   fuelSource: string = "na"
@@ -36,6 +38,9 @@ export class HelloworldComponent implements OnInit {
     ).subscribe((data: any)=>{
       // console.log("Hello")
       console.log(data);
+      console.log(data.body.co2e)
+      this.co2e = data.body.co2e;
+      this.co2eUnit = data.body.co2e_unit
     })  
   }
 
