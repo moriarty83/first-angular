@@ -3,11 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-
 import { HelloworldComponent } from './helloworld/helloworld.component';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 
@@ -15,15 +11,12 @@ import { FooterComponent } from './footer/footer.component';
   declarations: [
     AppComponent,
     HelloworldComponent,
-    FirstComponent,
-    SecondComponent,
     NavbarComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
