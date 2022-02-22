@@ -7,11 +7,11 @@ import { environment } from 'src/environments/environment';
 
 
 @Component({
-  selector: 'app-helloworld',
-  templateUrl: './helloworld.component.html',
-  styleUrls: ['./helloworld.component.css']
+  selector: 'app-calculator',
+  templateUrl: './calculator.component.html',
+  styleUrls: ['./calculator.component.css']
 })
-export class HelloworldComponent implements OnInit {
+export class CalculatorComponent implements OnInit {
   name = "Hello"
   helloWorld = "Hello World!"
   imageURL = ""

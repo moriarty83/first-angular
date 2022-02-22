@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HelloworldComponent } from './helloworld/helloworld.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 const routes: Routes = [
-  {path: 'hello-component', component: HelloworldComponent}
+  {path: 'calculator', component: CalculatorComponent}
 ];
 
 @NgModule({

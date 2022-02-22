@@ -1,0 +1,9 @@
+.card {
+  width: 15em;
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  border: 5px solid black;
+  border-radius: 1em;
+  background-color: aliceblue;
+}
