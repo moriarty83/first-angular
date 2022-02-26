@@ -10,7 +10,7 @@
     <label for="distance">Distance (mi)</label>
     <input name="distance" type="number" (change)="mileageHandler($event)">
 
-    <button (click)="getEmissions()">ClickMe</button>
+    <button (click)="getEmissions()">Get CO2e</button>
 
     <h1>Estimated CO2e</h1>
     <h2>{{co2e}} {{co2eUnit}} / {{co2e * 2.2}} lbs</h2>
